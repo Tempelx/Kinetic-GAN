@@ -73,8 +73,8 @@ if __name__ == '__main__':
     parser.add_argument("--sample_interval", type=int, default=5000, help="interval between action sampling")
     parser.add_argument("--checkpoint_interval", type=int, default=10000, help="interval between model saving")
     parser.add_argument("--dataset", type=str, default="ntu", help="dataset")
-    parser.add_argument("--data_path", type=str, default="./xsub/train_data.npy", help="path to data")
-    parser.add_argument("--label_path", type=str, default="./xsub/train_label.pkl", help="path to label")
+    parser.add_argument("--data_path", type=str, default="/home/espen/Documents/data/npy_files/processed/ntu60/xview60/xview60_train_data.npy", help="path to data")
+    parser.add_argument("--label_path", type=str, default="/home/espen/Documents/data/npy_files/processed/ntu60/xview60/xview60_train_label.pkl", help="path to label")
     opt = parser.parse_args()
     print(opt)
 
