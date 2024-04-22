@@ -159,7 +159,7 @@ for frame_idx in range(data_numpy.shape[1]):
 
         
     plt.savefig(os.path.join(out,"frame_"+str(frame_idx)+".png"))
-    #plt.show()
+    plt.show()
     print("The {} frame 3d skeleton......".format(frame_idx))
 
     ax.set_facecolor('none')

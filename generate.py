@@ -50,6 +50,8 @@ config_file = open(os.path.join(out,"gen_config.txt"),"w")
 config_file.write(str(os.path.basename(__file__)) + '|' + str(opt))
 config_file.close()
 
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 cuda = True if torch.cuda.is_available() else False
 print(cuda)
 
@@ -57,13 +59,13 @@ print(cuda)
 generator     = Generator(opt.latent_dim, opt.channels, opt.n_classes, opt.t_size, mlp_dim=opt.mlp_dim, dataset=opt.dataset)
 
 if cuda:
-    generator.cuda()
+    generator.to(device)
 
 FloatTensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 LongTensor = torch.cuda.LongTensor if cuda else torch.LongTensor
 
 # Load Models
-generator.load_state_dict(torch.load(opt.model), strict=False)
+generator.load_state_dict(torch.load(opt.model, map_location=device), strict=False)
 generator.eval()
 
 new_imgs   = []
